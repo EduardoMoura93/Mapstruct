@@ -67,6 +67,10 @@ public interface AbstractMapper<ENTITY, RESOURCE> {
 Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista de Resouce e vice versa, um pequeno exemplo utilizando o mapper para mapear do Resouce para o Model:
 
 ```
+mapper.toEntity(request)
+```
+
+```
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService {
