@@ -64,7 +64,7 @@ public interface AbstractMapper<ENTITY, RESOURCE> {
 }
 ```
 
-Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista de Resouce e vice versa, um pequeno exemplo utilizando o mapper para mapear do Resouce para o Model na linha 85:
+Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista de Resouce e vice versa, um pequeno exemplo utilizando o mapper para mapear do Resouce para o Model:
 
 ```
 @Service
