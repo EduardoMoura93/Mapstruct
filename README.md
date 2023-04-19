@@ -41,8 +41,6 @@ O MapStruct é uma biblioteca Java de código aberto que é usada para mapear ob
   
 3- Criar uma interface e marcando com @Mapper, e tambem criei um AbstractMapper onde demos informar o Model e o Resource para ser mapeado.
 
-package br.com.apuramais.user.assembler;
-
 ```
 import br.com.testemapper.common.AbstractMapper;
 import br.com.testemapper.user.model.UserModel;
@@ -57,8 +55,6 @@ public interface UserAssemblerMapper extends AbstractMapper<UserModel, UserReque
 4 - Agora o AbstractMapper
 
 ```
-package br.com.testemapper.common;
-
 import java.util.List;
 
 public interface AbstractMapper<ENTITY, RESOURCE> {
