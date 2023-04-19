@@ -42,9 +42,6 @@ O MapStruct é uma biblioteca Java de código aberto que é usada para mapear ob
 3- Criar uma interface e marcando com @Mapper, e tambem criei um AbstractMapper onde demos informar o Model e o Resource para ser mapeado.
 
 ```
-import br.com.testemapper.common.AbstractMapper;
-import br.com.testemapper.user.model.UserModel;
-import br.com.testemapper.user.request.UserRequest;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
@@ -55,8 +52,6 @@ public interface UserAssemblerMapper extends AbstractMapper<UserModel, UserReque
 4 - Agora o AbstractMapper
 
 ```
-import java.util.List;
-
 public interface AbstractMapper<ENTITY, RESOURCE> {
 
     ENTITY toEntity(RESOURCE resource);
@@ -69,4 +64,28 @@ public interface AbstractMapper<ENTITY, RESOURCE> {
 }
 ```
 
-Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista de Resouce e vice versa
+Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista de Resouce e vice versa, um pequeno exemplo utilizando o mapper para mapear do Resouce para o Model na linha 85:
+
+```
+@Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+public class UserService {
+
+    private final UserRepository repository;
+    private final PasswordEncoder encoder;
+    private final UserAssemblerMapper mapper;
+    private final UserValidate validate;
+
+    public UserResponse createUser(UserRequest request){
+
+        validate.validateRequest(request);
+
+        request.setPassword(encoder.encode(request.getPassword()));
+        repository.save(mapper.toEntity(request));
+
+        UserResponse response = new UserResponse();
+         response.setMessage("Usuario " + request.getUserName() + " cadastrado com sucesso!");
+         return response;
+    }
+ ```
+
