@@ -68,3 +68,5 @@ public interface AbstractMapper<ENTITY, RESOURCE> {
     List<RESOURCE> toResources(List<ENTITY> entities);
 }
 ```
+
+Conseguimos utilizar esses metodos para mapear do Model para o Resource e lista de Model para lista Resouce e vice versa
